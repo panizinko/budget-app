@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AUTH, FIRESTORE } from './app.config';
 import { ShellComponent } from './components/shell/shell.component';
 
 @Component({
@@ -7,4 +8,12 @@ import { ShellComponent } from './components/shell/shell.component';
   template: ` <app-shell></app-shell> `,
   styles: '',
 })
-export class AppComponent {}
+export class AppComponent {
+  auth = inject(AUTH);
+  firestore = inject(FIRESTORE);
+
+  constructor() {
+    console.log('firebase auth', this.auth);
+    console.log('firebase firestore', this.firestore);
+  }
+}
