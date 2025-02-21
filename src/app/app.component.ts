@@ -1,17 +1,10 @@
 import { Component } from '@angular/core';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { RouterOutlet } from '@angular/router';
+import { ShellComponent } from './components/shell/shell.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MatSlideToggleModule],
-  template: `
-    <h1 class="text-3xl font-bold underline p-4">  Hello, {{ title }}</h1>
-    <mat-slide-toggle>Toggle me!</mat-slide-toggle>
-    <router-outlet></router-outlet>
-  `,
-  styles: ''
+  imports: [ShellComponent],
+  template: ` <app-shell></app-shell> `,
+  styles: '',
 })
-export class AppComponent {
-  title = 'budget-app';
-}
+export class AppComponent {}
