@@ -4,8 +4,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule, RouterOutlet } from '@angular/router';
-import { MediaQueryService } from '../../services/media-query.service';
-import { SidebarService } from '../../services/sidebar.service';
+import { MediaQueryService } from '../../../shared/data-access/media-query.service';
+import { SidebarService } from '../../../shared/data-access/sidebar.service';
 
 @Component({
   selector: 'app-sidebar',

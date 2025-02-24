@@ -3,8 +3,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MediaQueryService } from '../../services/media-query.service';
-import { SidebarService } from '../../services/sidebar.service';
+import { MediaQueryService } from '../../../shared/data-access/media-query.service';
+import { SidebarService } from '../../../shared/data-access/sidebar.service';
 
 @Component({
   selector: 'app-navbar',

@@ -2,13 +2,15 @@ import { Injectable, signal } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class SidebarService {
-  readonly isExpanded = signal(true);
+  #isExpanded = signal(true);
+
+  isExpanded = this.#isExpanded.asReadonly();
 
   toggleSidebar() {
-    this.isExpanded.set(!this.isExpanded());
+    this.#isExpanded.set(!this.#isExpanded());
   }
 
   closeSidebar() {
-    this.isExpanded.set(false);
+    this.#isExpanded.set(false);
   }
 }

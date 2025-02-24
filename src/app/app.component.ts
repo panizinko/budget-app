@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { AUTH, FIRESTORE } from './app.config';
-import { ShellComponent } from './components/shell/shell.component';
+import { ShellComponent } from './common/ui/shell/shell.component';
 
 @Component({
   selector: 'app-root',

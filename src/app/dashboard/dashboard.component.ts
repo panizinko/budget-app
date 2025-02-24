@@ -5,4 +5,4 @@ import { Component } from '@angular/core';
   imports: [],
   template: ` <p>hello from dashboard</p> `,
 })
-export class DashboardComponent {}
+export default class DashboardComponent {}
