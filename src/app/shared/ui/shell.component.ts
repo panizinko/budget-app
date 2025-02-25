@@ -11,4 +11,4 @@ import { SidebarComponent } from './sidebar.component';
     </app-sidebar>
   `,
 })
-export class ShellComponent {}
+export default class ShellComponent {}

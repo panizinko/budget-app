@@ -3,6 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { AuthService } from '../data-access/auth.service';
 import { MediaQueryService } from '../data-access/media-query.service';
 import { SidebarService } from '../data-access/sidebar.service';
 
@@ -20,11 +21,17 @@ import { SidebarService } from '../data-access/sidebar.service';
         <span class="text-xl font-bold">📊 Budget App</span>
       </div>
       <div class="flex items-center gap-4">
-        @for (item of toolbarItems; track item) {
-          <button mat-icon-button matTooltip="{{ item.label }}">
-            <mat-icon>{{ item.icon }}</mat-icon>
-          </button>
-        }
+        <button mat-icon-button matTooltip="Notifications">
+          <mat-icon>notifications</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          matTooltip="Logout"
+          (click)="authService.logout()"
+        >
+          <mat-icon>logout</mat-icon>
+        </button>
       </div>
     </mat-toolbar>
   `,
@@ -33,8 +40,5 @@ export class NavbarComponent {
   sidebarService = inject(SidebarService);
   mediaQueryService = inject(MediaQueryService);
 
-  toolbarItems = [
-    { label: 'Notifications', icon: 'notifications' },
-    { label: 'Logout', icon: 'logout' },
-  ];
+  authService = inject(AuthService);
 }

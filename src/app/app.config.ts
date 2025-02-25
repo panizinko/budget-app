@@ -25,6 +25,7 @@ export const AUTH = new InjectionToken('AUTH', {
   providedIn: 'root',
   factory: () => {
     const auth = getAuth();
+
     if (environment.useEmulators) {
       connectAuthEmulator(auth, 'http://localhost:9099', {
         disableWarnings: true,

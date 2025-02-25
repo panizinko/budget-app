@@ -42,3 +42,6 @@ testem.log
 Thumbs.db
 
 .env
+
+firebase-debug.log
+firestore-debug.log

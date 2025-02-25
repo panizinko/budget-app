@@ -1,10 +1,12 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
+import { toObservable } from '@angular/core/rxjs-interop';
 import { collection, orderBy, query } from 'firebase/firestore';
 import { connect } from 'ngxtension/connect';
 import { collectionData } from 'rxfire/firestore';
-import { map, merge, type Observable } from 'rxjs';
+import { filter, map, merge, retry, type Observable } from 'rxjs';
 import { FIRESTORE } from '../../app.config';
 import type { Transaction } from '../interfaces/transaction';
+import { AuthService } from './auth.service';
 
 interface TransactionState {
   transactions: Transaction[];
@@ -17,9 +19,17 @@ interface TransactionState {
 })
 export class TransactionService {
   private firestore = inject(FIRESTORE);
+  private authService = inject(AuthService);
+
+  private loggedIn$ = toObservable(this.authService.loggedIn);
 
   // actions
-  transactions$ = this.getTransactions();
+  transactions$ = this.getTransactions().pipe(
+    // restart stream when user re-authenticates
+    retry({
+      delay: () => this.loggedIn$.pipe(filter((user) => !!user)),
+    }),
+  );
 
   // state
   private state = signal<TransactionState>({

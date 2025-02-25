@@ -38,3 +38,23 @@ section {
   right: 0;
   left: 0;
 }
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.gradient-bg {
+  background: linear-gradient(
+    138deg,
+    var(--primary-darker-color) 0%,
+    var(--primary-color) 100%
+  );
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
