@@ -18,7 +18,7 @@ interface TransactionState {
 export class TransactionService {
   private firestore = inject(FIRESTORE);
 
-  // sources
+  // actions
   transactions$ = this.getTransactions();
 
   // state

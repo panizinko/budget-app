@@ -1,9 +1,40 @@
 @use "tailwindcss";
+
+:root {
+  --color-dark: #1c1d3b;
+  --color-light: #ffffff;
+}
+
 html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: var(--color-light);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  background: var(--color-light);
+}
+
+section {
+  height: 100%;
+  padding: 2rem;
+  background: var(--color-primary);
+}
+
+.dialog-container {
+  position: absolute !important;
+  background-color: var(--color-light);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }

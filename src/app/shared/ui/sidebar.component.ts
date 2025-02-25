@@ -4,8 +4,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule, RouterOutlet } from '@angular/router';
-import { MediaQueryService } from '../../../shared/data-access/media-query.service';
-import { SidebarService } from '../../../shared/data-access/sidebar.service';
+import { MediaQueryService } from '../data-access/media-query.service';
+import { SidebarService } from '../data-access/sidebar.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -19,8 +19,8 @@ import { SidebarService } from '../../../shared/data-access/sidebar.service';
   ],
   template: `
     <mat-sidenav-container
-      class="h-screen"
       (backdropClick)="sidebarService.closeSidebar()"
+      class="h-full"
     >
       <mat-sidenav
         #sidenav
@@ -50,7 +50,7 @@ import { SidebarService } from '../../../shared/data-access/sidebar.service';
 
       <mat-sidenav-content>
         <ng-content></ng-content>
-        <main class="mt-8 ml-8">
+        <main class="mt-8 px-8">
           <router-outlet></router-outlet>
         </main>
       </mat-sidenav-content>
@@ -72,6 +72,7 @@ export class SidebarComponent {
   navItems = [
     { label: 'Home', route: '/', icon: 'home' },
     { label: 'Dashboard', route: '/dashboard', icon: 'dashboard' },
+    { label: 'Checklists', route: '/checklists', icon: 'check' },
     { label: 'Expenses', route: '/expenses', icon: 'receipt' },
     { label: 'Income', route: '/income', icon: 'attach_money' },
     { label: 'Settings', route: '/settings', icon: 'settings' },

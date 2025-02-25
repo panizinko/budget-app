@@ -3,21 +3,21 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MediaQueryService } from '../../../shared/data-access/media-query.service';
-import { SidebarService } from '../../../shared/data-access/sidebar.service';
+import { MediaQueryService } from '../data-access/media-query.service';
+import { SidebarService } from '../data-access/sidebar.service';
 
 @Component({
   selector: 'app-navbar',
   imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatTooltipModule],
   template: `
-    <mat-toolbar color="primary" class="flex justify-between px-4">
+    <mat-toolbar color="primary" class="flex justify-between !px-8">
       <div class="flex items-center gap-4">
         @if (mediaQueryService.isMobile()) {
           <button mat-icon-button (click)="sidebarService.toggleSidebar()">
             <mat-icon>menu</mat-icon>
           </button>
         }
-        <span class="text-xl font-bold">📊 Budget Dashboard</span>
+        <span class="text-xl font-bold">📊 Budget App</span>
       </div>
       <div class="flex items-center gap-4">
         @for (item of toolbarItems; track item) {
