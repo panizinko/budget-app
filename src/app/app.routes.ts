@@ -9,7 +9,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    canActivate: [isAuthenticatedGuard()],
+    canActivate: [isAuthenticatedGuard],
     loadComponent: () => import('./shared/ui/shell.component'),
     children: [
       {
@@ -33,8 +33,7 @@ export const routes: Routes = [
     ],
   },
   {
-    path: '',
+    path: '**',
     redirectTo: 'auth',
-    pathMatch: 'full',
   },
 ];

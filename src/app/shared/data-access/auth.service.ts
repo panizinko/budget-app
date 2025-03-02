@@ -7,7 +7,7 @@ import {
 } from 'firebase/auth';
 import { connect } from 'ngxtension/connect';
 import { authState } from 'rxfire/auth';
-import { defer, from, map, merge, tap } from 'rxjs';
+import { defer, from, map, merge } from 'rxjs';
 import { AUTH } from '../../app.config';
 import type { Credentials } from '../interfaces/credentials';
 
@@ -35,10 +35,6 @@ export class AuthService {
   loggedIn = computed(() => this.state().loggedIn);
 
   constructor() {
-    authState(this.auth)
-      .pipe(tap((user) => console.log('user', user)))
-      .subscribe();
-
     const nextState$ = merge(
       this.loggedIn$.pipe(map((loggedIn) => ({ loggedIn }))),
     );
