@@ -1,3 +1,7 @@
+// Use more information that just a title for either the checklist or checklist items. You can do whatever you like here, but as an example you might display the date the checklist was created, or maybe you can allow the user to supply a description for the checklist as well.
+// Add some kind of indicator that shows how many items in a checklist are in the completed state (e.g. 5/7 complete)
+// Add something to the interface on the home page that shows how many items each checklist has
+
 import { Component, effect, inject, signal } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -28,7 +32,11 @@ import { ChecklistListComponent } from './ui/checklist-list.component';
       </header>
 
       <section>
-        <app-checklist-list [checklists]="checklistService.checklists()" />
+        <app-checklist-list
+          [checklists]="checklistService.checklists()"
+          (delete)="checklistService.delete$.next($event)"
+          (edit)="checklistBeingEdited.set($event)"
+        />
       </section>
     </main>
 
@@ -38,7 +46,14 @@ import { ChecklistListComponent } from './ui/checklist-list.component';
           [title]="checklistBeingEdited()?.title || 'Add Checklist'"
           [formGroup]="checklistForm"
           (close)="checklistBeingEdited.set(null)"
-          (save)="checklistService.add$.next(checklistForm.getRawValue())"
+          (save)="
+            checklistBeingEdited()?.id
+              ? checklistService.edit$.next({
+                  id: checklistBeingEdited()!.id!,
+                  data: checklistForm.getRawValue(),
+                })
+              : checklistService.add$.next(checklistForm.getRawValue())
+          "
         ></app-modal-form>
       </ng-template>
     </app-modal>
@@ -81,6 +96,10 @@ export default class ChecklistsComponent {
 
       if (!checklist) {
         this.checklistForm.reset();
+      } else {
+        this.checklistForm.patchValue({
+          title: checklist.title,
+        });
       }
     });
   }

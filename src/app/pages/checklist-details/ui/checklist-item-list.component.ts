@@ -1,4 +1,5 @@
 import { Component, input, output } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import type {
   ChecklistItem,
   RemoveChecklistItem,
@@ -6,6 +7,7 @@ import type {
 
 @Component({
   selector: 'app-checklist-item-list',
+  imports: [MatButtonModule],
   template: `
     <section>
       <ul>
@@ -16,6 +18,10 @@ import type {
                 <span>✅</span>
               }
               <button (click)="toggle.emit(item.id)">{{ item.title }}</button>
+            </div>
+            <div class="flex gap-2">
+              <button mat-button (click)="edit.emit(item)">Edit</button>
+              <button mat-button (click)="delete.emit(item.id)">Delete</button>
             </div>
           </li>
         } @empty {
@@ -28,4 +34,7 @@ import type {
 export class ChecklistItemListComponent {
   checklistItems = input.required<ChecklistItem[]>();
   toggle = output<RemoveChecklistItem>();
+
+  edit = output<ChecklistItem>();
+  delete = output<ChecklistItem['id']>();
 }
