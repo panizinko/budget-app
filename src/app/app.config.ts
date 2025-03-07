@@ -16,6 +16,7 @@ import {
   initializeFirestore,
 } from 'firebase/firestore';
 
+import { provideHttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { routes } from './app.routes';
 
@@ -54,5 +55,6 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideAnimationsAsync(),
+    provideHttpClient(),
   ],
 };

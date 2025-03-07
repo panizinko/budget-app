@@ -73,6 +73,7 @@ export class SidebarComponent {
     { label: 'Home', route: '/', icon: 'home' },
     { label: 'Dashboard', route: '/dashboard', icon: 'dashboard' },
     { label: 'Checklists', route: '/checklists', icon: 'check' },
+    { label: 'Secrets', route: '/secrets', icon: 'shield_question' },
     { label: 'Expenses', route: '/expenses', icon: 'receipt' },
     { label: 'Income', route: '/income', icon: 'attach_money' },
     { label: 'Settings', route: '/settings', icon: 'settings' },

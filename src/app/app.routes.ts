@@ -17,6 +17,10 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/dashboard/dashboard.component'),
       },
       {
+        path: 'secrets',
+        loadComponent: () => import('./pages/gifs/gifs.component'),
+      },
+      {
         path: 'checklists',
         loadComponent: () => import('./pages/checklists/checklists.component'),
       },
